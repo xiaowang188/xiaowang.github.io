@@ -9,7 +9,7 @@ body {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 header {
@@ -20,13 +20,27 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
+    z-index: 10;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: 300;
-    letter-spacing: 3px;
+.logo, .logo a {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 5px;
     color: #ffffff;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.logo:hover, .logo a:hover {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                 0 0 40px rgba(255, 255, 255, 0.3),
+                 0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+.logo a::before {
+    display: none;
 }
 
 .nav-link {
@@ -44,15 +58,21 @@ header {
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    position: relative;
+    min-height: 200vh;
 }
 
 .center-text {
     display: flex;
     gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
 .center-text span {
@@ -79,5 +99,213 @@ main {
                      0 0 50px rgba(255, 255, 255, 0.5),
                      0 0 70px rgba(255, 255, 255, 0.3);
         transform: translateY(-10px);
+    }
+}
+
+.scroll-indicator {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 3;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    margin: 0 auto 10px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 8px;
+    border-radius: 2px;
+    animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 20px); opacity: 0; }
+}
+
+/* AI 新闻区域 */
+.ai-news {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    right: 0;
+    min-height: 100vh;
+    padding: 120px 40px 80px;
+    background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+    z-index: 2;
+}
+
+/* 添加背景效果 */
+.ai-news::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 80px;
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 5px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.news-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s forwards;
+}
+
+.news-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03));
+    z-index: -1;
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-content h3 {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.news-content p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 10px 0;
+    position: relative;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.read-more::after {
+    content: '→';
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover::after {
+    transform: translateX(5px);
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-news {
+        padding: 100px 20px 60px;
+    }
+
+    .section-title {
+        font-size: 2.2em;
+        margin-bottom: 60px;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .news-card {
+        padding: 25px;
+    }
+}
+
+/* 为每个卡片添加延迟动画 */
+.news-card:nth-child(1) { animation-delay: 0.1s; }
+.news-card:nth-child(2) { animation-delay: 0.2s; }
+.news-card:nth-child(3) { animation-delay: 0.3s; }
+.news-card:nth-child(4) { animation-delay: 0.4s; }
+.news-card:nth-child(5) { animation-delay: 0.5s; }
+.news-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 } 

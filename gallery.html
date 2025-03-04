@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XIAOWANG - 作品集</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html" class="home-link">XIAO WANG</a></div>
+        <nav>
+            <a href="https://www.xiaohongshu.com/user/profile/638aac13000000001f01a25b" target="_blank" class="nav-link">小红书</a>
+            <a href="gallery.html" class="nav-link active" style="margin-left: 20px;">作品集</a>
+        </nav>
+    </header>
+    
+    <main class="gallery-main">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/artwork1.jpg" alt="Artwork 1">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork2.jpg" alt="Artwork 2">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork3.jpg" alt="Artwork 3">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork4.jpg" alt="Artwork 4">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork5.jpg" alt="Artwork 5">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork6.jpg" alt="Artwork 6">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork7.jpg" alt="Artwork 7">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork8.jpg" alt="Artwork 8">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork9.jpg" alt="Artwork 9">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork10.jpg" alt="Artwork 10">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork11.jpg" alt="Artwork 11">
+            </div>
+            <div class="gallery-item">
+                <img src="images/artwork12.jpg" alt="Artwork 12">
+            </div>
+        </div>
+    </main>
+
+    <!-- 添加模态框 -->
+    <div class="modal" id="imageModal">
+        <span class="close-button">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeButton = document.querySelector('.close-button');
+            const galleryImages = document.querySelectorAll('.gallery-item img');
+
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            });
+
+            // 点击关闭按钮关闭模态框
+            closeButton.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+
+            // 点击模态框外部区域也可以关闭
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            // 添加键盘 ESC 键关闭功能
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === "block") {
+                    modal.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

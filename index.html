@@ -11,8 +11,8 @@
     <header>
         <div class="logo">XIAO WANG</div>
         <nav>
-            <a href="https://www.xiaohongshu.com/user/profile/638aac13000000001f01a25b?xsec_token=YBHicPk62LbLjY7SCDWOo2lqWBJSfXnTZ7zeNKSobgGKQ%3D&xsec_source=app_share&xhsshare=CopyLink&appuid=638aac13000000001f01a25b&apptime=1740379062&share_id=e851dfae3d30416b8b40954819c50393&share_channel=copy_link
-            " target="_blank" class="nav-link">小红书</a>
+            <a href="https://www.xiaohongshu.com/user/profile/638aac13000000001f01a25b?xsec_token=YBHicPk62LbLjY7SCDWOo2lqWBJSfXnTZ7zeNKSobgGKQ%3D&xsec_source=app_share&xhsshare=CopyLink&appuid=638aac13000000001f01a25b&apptime=1740379062&share_id=e851dfae3d30416b8b40954819c50393&share_channel=copy_link" target="_blank" class="nav-link">小红书</a>
+            <a href="gallery.html" class="nav-link" style="margin-left: 20px;">作品集</a>
         </nav>
     </header>
     
@@ -27,6 +27,81 @@
             <span>N</span>
             <span>G</span>
         </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>向下滚动查看更多</p>
+        </div>
+
+        <section class="ai-news" id="ai-news">
+            <h2 class="section-title">AI 前沿资讯</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>2025年将会是AI爆发的元年吗？
+                        </h3>
+                        <p>OpenAI CEO Sam Altman 暗示，GPT-5将带来革命性的多模态理解能力，不仅能处理文本，还能实现更深层次的视觉理解和音频分析...</p>
+                        <a href="articles/gpt5-preview.html" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>AI 艺术创作引发版权争议，多国开始立法规范</h3>
+                        <p>随着 AI 生成艺术作品的普及，关于知识产权的讨论愈发激烈。多个国家开始着手制定相关法规，以平衡创新与保护...</p>
+                        <a href="articles/ai-art-copyright.html" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>量子计算与 AI 结合，计算效率提升百倍</h3>
+                        <p>谷歌量子计算研究团队宣布重大突破，将量子计算技术应用于深度学习模型训练，使训练速度提升超过100倍...</p>
+                        <a href="articles/quantum-ai.html" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>AI 辅助医疗诊断准确率突破 99%</h3>
+                        <p>最新研究表明，基于深度学习的医疗影像诊断系统在某些疾病的诊断准确率已超过人类专家，为远程医疗带来新机遇...</p>
+                        <a href="articles/ai-medical.html" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>自动驾驶技术重大进展：城市级别完全自动化将至</h3>
+                        <p>特斯拉发布最新自动驾驶数据，显示在复杂城市环境下的安全性能显著提升，完全自动驾驶技术或将提前实现...</p>
+                        <a href="articles/autonomous-driving.html" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-content">
+                        <h3>AI 教育革新：个性化学习平台改变传统教育模式</h3>
+                        <p>采用 AI 技术的自适应学习平台显示出显著成效，学生学习效率提升40%，为未来教育发展指明新方向...</p>
+                        <a href="articles/ai-education.html" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+            </div>
+        </section>
     </main>
+
+    <!-- 添加简单的滚动检测脚本 -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const newsSection = document.querySelector('.ai-news');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            // 当滚动到新闻区域时隐藏滚动提示
+            if (scrollPosition > window.innerHeight / 2) {
+                scrollIndicator.style.opacity = '0';
+            } else {
+                scrollIndicator.style.opacity = '1';
+            }
+        });
+    </script>
 </body>
 </html> 
